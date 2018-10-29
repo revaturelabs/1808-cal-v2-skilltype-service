@@ -8,5 +8,10 @@ spring:
     hibernate:
       ddl-auto: create
 
+eureka:
+ client:
+   service-url:
+     default-zone: ${EUREKA_ZONE}
+
 server:
   port: 8080

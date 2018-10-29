@@ -18,10 +18,10 @@ import com.revature.caliber.services.SkillTypeService;
 
 /**
  * 
- * @author Tad Perry, Loren Henderson
+ * @author Loren Henderson, Tad Perry
+ * 
  *
- *
- * Controller for performing crud methods on skills. used to populate ui lists.
+ * Controller for performing CRUD methods on skills. used to populate ui lists.
  */
 @RestController
 @RequestMapping(value = "types", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -50,20 +50,6 @@ public class SkillTypeController {
 		}
 
 		return result;
-		
-	}
-
-	public SkillTypeController() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public SkillTypeService getSkillService() {
-		return skillService;
-	}
-
-	public void setSkillService(SkillTypeService skillService) {
-		this.skillService = skillService;
 	}
 
 	/**
@@ -75,32 +61,45 @@ public class SkillTypeController {
 	 * @return a success message
 	 */
 	@RequestMapping(value = "skill", method = RequestMethod.POST)
-	public String addSkillType(@RequestBody SkillType skill) {
+	public void addSkillType(@RequestBody SkillType skill) {
 		log.debug("adding skill: " + skill);
 		skillService.createSkillType(skill);
-		return "successfully added skill";
 	}
 
 	/**
 	 * Get a single skill by the id
 	 * 
+	 * 
 	 * @param id the id of the skill
-	 * @return the string of the type of skill
+	 * @return The string of the type of skill
 	 */
 	@GetMapping(value = "skill/{id}")
 	public String getType(@PathVariable("id")Integer id) {
+		log.debug("Retrieving skill with id: " + id);
 		return skillService.getSkillType(id).getType();
 	}
 	
 	/**
 	 * removes the skill from the db
 	 * 
-	 * @param type the string representing the type of skill to be removed
+	 * @param type the string representing the type of skill to be removed.
 	 */
 	@DeleteMapping(value = "skill/{type}")
 	public void deleteType(@PathVariable("type")String type) {
+		log.debug("Deleting SkillType: " + type);
 		skillService.deleteSkillType(new SkillType(0, type));
 	}
 
+	public SkillTypeController() {
+		super();
+	}
 
+
+	public SkillTypeService getSkillService() {
+		return skillService;
+	}
+
+	public void setSkillService(SkillTypeService skillService) {
+		this.skillService = skillService;
+	}
 }

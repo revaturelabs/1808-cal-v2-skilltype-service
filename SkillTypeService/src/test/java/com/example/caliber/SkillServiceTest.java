@@ -15,6 +15,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.springframework.test.util.ReflectionTestUtils;
 
 import com.revature.caliber.beans.SkillType;
 import com.revature.caliber.data.SkillTypeRepository;
@@ -46,6 +47,8 @@ public class SkillServiceTest {
 				new SkillType(2, "Java Full Stack")}));
 		when(repo.findAll()).thenReturn(this.skillList);
 		when(repo.findOne(1)).thenReturn(this.skill);
+
+		
 	}
 
 

@@ -70,8 +70,8 @@ public class SkillTypeControllerTest {
 		org.mockito.Mockito.when(service.getSkillType(1)).thenReturn(skill);
 		org.mockito.Mockito.when(service.getSkillTypes()).thenReturn(skills);			
 	}
-	
-	
+
+
 	@Test
 	public void testGetSkill() {
 		List<String> allSkills = controller.allSkillTypes();
@@ -81,18 +81,18 @@ public class SkillTypeControllerTest {
 		assertEquals( "Expected second skill in list to be " + skills.get(1).getType() , skills.get(1).getType(), allSkills.get(1));
 
 	}
-	
+
 	@Test
 	public void testEndpoints() {
 		get("types/skill/all").then().statusCode(200);
 	}
-	
+
 	@Test
 	public void testAddSkillType() {
 		controller.addSkillType(skill);
-		verify(service).createSkillType(skill);	
+		verify(service).createSkillType(skill);
 	}
-	
+
 	@Test
 	public void testGetSkillType() {
 		String sType = controller.getType(1);

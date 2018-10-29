@@ -16,7 +16,7 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name="skiltype")
+@Table(name="skilltype")
 public class SkillType {
 	
 	@Id

@@ -4,11 +4,12 @@ addons:
   sonarcloud:
     organization:  revaturelabs
 before_install:
-  - chmod +x ./SkillTypeService/mvnw
+  - cd SkillTypeService
+  - chmod +x mvnw
 install:
 - mvn -N io.takari:maven:wrapper
 - ./SkillTypeService/mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 script:
-  - mvn -f ./SkillTypeService/pom.xml clean install package
-  - sonar-scanner
+  - mvn pom.xml clean install package
+  - ../sonar-scanner
 

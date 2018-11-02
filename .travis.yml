@@ -1,0 +1,12 @@
+language: java
+dist: trusty
+addons:
+  sonarcloud:
+    organization:  revaturelabs
+install:
+- mvn -N io.takari:maven:wrapper
+- ./SkillTypeService/mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+script:
+  - mvn -f ./SkillTypeService/pom.xml clean install package
+  - sonar-scanner
+

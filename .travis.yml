@@ -11,5 +11,5 @@ install:
 - ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 script:
   - mvn pom.xml clean install package
-  - ../sonar-scanner
+  - sonar-scanner
 

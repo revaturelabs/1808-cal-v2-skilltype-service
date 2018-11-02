@@ -41,7 +41,7 @@ public class SkillTypeController {
 	public List<String> allSkillTypes() {
 
 		log.debug("Fetching skill types");
-		List<String> result = new ArrayList<String>();
+		List<String> result = new ArrayList<>();
 
 		List<SkillType> skills = skillService.getSkillTypes();
 

@@ -10,9 +10,13 @@ import org.apache.log4j.Logger;
  *
  */
 public class LoggingUtil {
-
+	
 	private static Logger log = Logger.getRootLogger();
 
+	private LoggingUtil() {
+		super();
+	}
+	
 	public static void logFatal(String message){
 		log.fatal(message);
 	}

@@ -80,9 +80,8 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.netflix.eureka</groupId>
-			<artifactId>eureka-client</artifactId>
-			<scope>runtime</scope>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>  <!-- this may cause issues, alt spring-cloud-starter-eureka -->
 		</dependency>
 
 	</dependencies>

@@ -67,4 +67,9 @@ public class SkillType {
 			return ((SkillType)o).type.equals(this.type);
 		}
 	}
+	
+	@Override
+	public int hashCode() {
+		return this.type.hashCode();
+	}
 }

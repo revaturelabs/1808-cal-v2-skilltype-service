@@ -1,12 +1,8 @@
 package com.example.caliber;
 
 import static io.restassured.RestAssured.get;
-import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.verify;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,19 +14,14 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.runners.MockitoJUnitRunner;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
 
 import com.revature.caliber.SkillTypeServiceApplication;
 import com.revature.caliber.beans.SkillType;
 import com.revature.caliber.controllers.SkillTypeController;
 import com.revature.caliber.services.SkillTypeService;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import io.restassured.RestAssured;
 
@@ -42,7 +33,9 @@ import io.restassured.RestAssured;
  *This class tests the skill type controller methods individually. It uses
  *RESTassured to mock Http requests to test the end points.
  */
-@RunWith(MockitoJUnitRunner.class)
+
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = SkillTypeServiceApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class SkillTypeControllerTest {
 
 	@Mock
@@ -51,6 +44,9 @@ public class SkillTypeControllerTest {
 	@InjectMocks
 	static SkillTypeController controller;
 
+	@LocalServerPort
+	private int port;
+	
 	static SkillType skill;
 	static List<SkillType> skills;
 	
@@ -61,8 +57,9 @@ public class SkillTypeControllerTest {
 
 	@Before
 	public void setup() {
-		RestAssured.port = 8080;
-		skills.clear();
+		RestAssured.port = port;
+        MockitoAnnotations.initMocks(this);
+        skills.clear();
 		this.skill = new SkillType(1, "java");
 		this.skills = new ArrayList<SkillType>();
 		skills.add(this.skill);

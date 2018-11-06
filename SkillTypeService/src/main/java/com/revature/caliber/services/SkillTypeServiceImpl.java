@@ -31,7 +31,7 @@ public class SkillTypeServiceImpl implements SkillTypeService {
 	 * 
 	 * Adds skill to repository
 	 * 
-	 * @param skill the skill to be added to the repo
+	 * @param skill The skill to be added to the repository
 	 */
 	@Override
 	public void createSkillType(SkillType skill) {
@@ -53,7 +53,7 @@ public class SkillTypeServiceImpl implements SkillTypeService {
 	}
 
 	/**
-	 * Returns a list of all skilltypes
+	 * Returns a list of all SkillTypes
 	 * 
 	 * @return List of all SkillTypes
 	 */
@@ -76,7 +76,7 @@ public class SkillTypeServiceImpl implements SkillTypeService {
 	/**
 	 * Deletes a skill
 	 * 
-	 * @param skill The skill to remove from the repo
+	 * @param skill The skill to remove from the repository
 	 */
 	@Override
 	public void deleteSkillType(SkillType skill) {

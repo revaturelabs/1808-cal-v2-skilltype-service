@@ -22,7 +22,7 @@ import com.revature.caliber.services.SkillTypeService;
  * @author Loren Henderson, Tad Perry
  * 
  *
- * Controller for performing CRUD methods on skills. used to populate ui lists.
+ * Controller for performing CRUD methods on skills. Used to populate UI lists.
  */
 @RestController
 @RequestMapping(value = "types", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -35,7 +35,7 @@ public class SkillTypeController {
 	private SkillTypeService skillService;
 
 	/**
-	 * Get Skill types to select appropriate type on UI
+	 * Get Skill types to select appropriate skill on UI
 	 *
 	 * @return the response entity
 	 */
@@ -73,7 +73,7 @@ public class SkillTypeController {
 	 * 
 	 * 
 	 * @param id the id of the skill
-	 * @return The string of the type of skill
+	 * @return The string representation of the type of skill
 	 */
 	@GetMapping(value = "skill/{id}")
 	public String getType(@PathVariable("id")Integer id) {
@@ -82,7 +82,7 @@ public class SkillTypeController {
 	}
 	
 	/**
-	 * removes the skill from the db
+	 * Removes the skill from the database.
 	 * 
 	 * @param type the string representing the type of skill to be removed.
 	 */

@@ -4,7 +4,7 @@ import org.apache.log4j.Logger;
 
 /**
  * 
- * This is the logging util class setting up log4j in the project.
+ * This is the logging utility class setting up log4j in the project.
  * 
  * @author Loren Henderson, Tad Perry
  *

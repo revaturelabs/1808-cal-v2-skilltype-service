@@ -1,7 +1,10 @@
- spring: 
+spring: 
   cloud:
     config:
       name: skilltype-service
       discovery:
         service-id: config
         enabled: true
+server:
+  servlet-path: /skill/*
+        

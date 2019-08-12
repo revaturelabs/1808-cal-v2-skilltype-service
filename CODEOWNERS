@@ -1,5 +1,3 @@
-buildspec.yml    @revaturelabs/cloud-ops
-
+buildspec.yml @revaturelabs/cloud-ops
 Dockerfile	@revaturelabs/cloud-ops
-
 .travis.yml	@revaturelabs/cloud-ops

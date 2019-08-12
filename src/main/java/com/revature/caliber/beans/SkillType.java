@@ -1,11 +1,6 @@
 package com.revature.caliber.beans;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * 
@@ -21,7 +16,8 @@ public class SkillType {
 	
 	@Id
 	@Column(name="id")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "SKILLTYPE_ID_SEQUENCE")
+	@SequenceGenerator(name = "SKILLTYPE_ID_SEQUENCE", sequenceName = "SKILLTYPE_ID_SEQUENCE")
 	Integer id;
 	
 	@Column(name="type", nullable=false)

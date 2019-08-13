@@ -89,6 +89,12 @@
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>  <!-- this may cause issues, alt spring-cloud-starter-eureka -->
 		</dependency>
 
+
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc7</artifactId>
+			<version>12.1.0</version>
+		</dependency>
 	</dependencies>
 
 	<dependencyManagement>

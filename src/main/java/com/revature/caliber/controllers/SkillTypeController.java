@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -78,7 +79,11 @@ public class SkillTypeController {
 	@GetMapping(value = "skill/{id}")
 	public String getType(@PathVariable("id")Integer id) {
 		log.debug("Retrieving skill with id: " + id);
-		return skillService.getSkillType(id).getType();
+		String skillType = skillService.getSkillType(id).getType();
+		if (!StringUtils.hasText(skillType)) {
+			return "No Skill Type available with id " + id;
+		}
+		return skillType;
 	}
 	
 	/**

@@ -79,11 +79,11 @@ public class SkillTypeController {
 	@GetMapping(value = "skill/{id}")
 	public String getType(@PathVariable("id")Integer id) {
 		log.debug("Retrieving skill with id: " + id);
-		String skillType = skillService.getSkillType(id).getType();
-		if (!StringUtils.hasText(skillType)) {
+		SkillType type = skillService.getSkillType(id);
+		if (type == null || !StringUtils.hasText(type.getType())) {
 			return "No Skill Type available with id " + id;
 		}
-		return skillType;
+		return type.getType();
 	}
 	
 	/**

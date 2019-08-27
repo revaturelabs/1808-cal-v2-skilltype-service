@@ -8,4 +8,5 @@ import com.revature.caliber.beans.SkillType;
  */
 @Repository
 public interface SkillTypeRepository extends JpaRepository<SkillType, Integer> {
+  SkillType findSkillTypeByType(String type);
 }

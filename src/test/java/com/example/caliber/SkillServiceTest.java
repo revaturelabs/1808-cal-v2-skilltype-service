@@ -1,24 +1,22 @@
 package com.example.caliber;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import com.revature.caliber.beans.SkillType;
+import com.revature.caliber.data.SkillTypeRepository;
+import com.revature.caliber.services.SkillTypeServiceImpl;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
-
-import com.revature.caliber.beans.SkillType;
-import com.revature.caliber.data.SkillTypeRepository;
-import com.revature.caliber.services.SkillTypeServiceImpl;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class SkillServiceTest {
@@ -26,7 +24,6 @@ public class SkillServiceTest {
 	@Mock
 	SkillTypeRepository repo;
 
-	@InjectMocks
 	SkillTypeServiceImpl ss;
 
 
@@ -42,12 +39,12 @@ public class SkillServiceTest {
 	@Before
 	public void setUp() throws Exception {
 		this.skill = new SkillType(1, "PEGA");
-		this.skillList.addAll(Arrays.asList(new SkillType[] {this.skill,
+		this.skillList.addAll(Arrays.asList(new SkillType[] {skill,
 				new SkillType(2, "Java Full Stack")}));
-		when(repo.findAll()).thenReturn(this.skillList);
-		when(repo.findOne(1)).thenReturn(this.skill);
-
-		
+		when(repo.findAll()).thenReturn(skillList);
+		when(repo.findOne(1)).thenReturn(skill);
+		when(repo.findSkillTypeByType("PEGA")).thenReturn(skill);
+		ss = new SkillTypeServiceImpl(repo);
 	}
 
 
@@ -82,6 +79,7 @@ public class SkillServiceTest {
 	@Test
 	public void testDeleteSkill() {
 		ss.deleteSkillType(this.skill);
+		verify(repo).findSkillTypeByType("PEGA");
 		verify(repo).delete(this.skill);
 	}
 

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.revature.caliber.beans.SkillType;
 import com.revature.caliber.data.SkillTypeRepository;
+import org.springframework.util.StringUtils;
 
 /**
  * 
@@ -22,6 +23,10 @@ public class SkillTypeServiceImpl implements SkillTypeService {
 
 	public SkillTypeServiceImpl() {
 		super();
+	}
+
+	public SkillTypeServiceImpl(SkillTypeRepository repo) {
+		this.skillRepo = repo;
 	}
 
 	@Autowired
@@ -80,7 +85,14 @@ public class SkillTypeServiceImpl implements SkillTypeService {
 	 */
 	@Override
 	public void deleteSkillType(SkillType skill) {
-		skillRepo.delete(skill);
+		SkillType type = null;
+		if (skill != null && StringUtils.hasText(skill.getType())) {
+			// Need the ID to delete
+			type = skillRepo.findSkillTypeByType(skill.getType());
+		}
+		if (type != null && StringUtils.hasText(type.getType())) {
+			skillRepo.delete(skill);
+		}
 	}
 
 }

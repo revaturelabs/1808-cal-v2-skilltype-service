@@ -91,7 +91,7 @@ public class SkillTypeServiceImpl implements SkillTypeService {
 			type = skillRepo.findSkillTypeByType(skill.getType());
 		}
 		if (type != null && StringUtils.hasText(type.getType())) {
-			skillRepo.delete(skill);
+			skillRepo.delete(type);
 		}
 	}
 

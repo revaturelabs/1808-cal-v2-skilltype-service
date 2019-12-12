@@ -18,16 +18,16 @@ public class SkillType {
 	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "SKILLTYPE_ID_SEQUENCE")
 	@SequenceGenerator(name = "SKILLTYPE_ID_SEQUENCE", sequenceName = "SKILLTYPE_ID_SEQUENCE")
-	Integer id;
+	private int id;
 	
 	@Column(name="type", nullable=false)
 	private String type;
 
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -36,7 +36,7 @@ public class SkillType {
 		super();
 	}
 	
-	public SkillType(Integer id, String type) {
+	public SkillType(int id, String type) {
 		super();
 		this.id = id;
 		this.type = type;

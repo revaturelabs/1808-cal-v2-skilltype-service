@@ -53,7 +53,7 @@ public class SkillTypeServiceImpl implements SkillTypeService {
 	 * 
 	 */
 	@Override
-	public SkillType getSkillType(Integer id) {
+	public SkillType getSkillType(int id) {
 		return skillRepo.findOne(id);
 	}
 

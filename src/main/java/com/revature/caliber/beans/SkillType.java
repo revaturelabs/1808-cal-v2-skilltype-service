@@ -56,16 +56,30 @@ public class SkillType {
 	}
 	
 	@Override
-	public boolean equals(Object o) {
-		if (!(o instanceof SkillType)) {
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
 			return false;
-		} else {
-			return ((SkillType)o).type.equals(this.type);
-		}
+		if (getClass() != obj.getClass())
+			return false;
+		SkillType other = (SkillType) obj;
+		if (id != other.id)
+			return false;
+		if (type == null) {
+			if (other.type != null)
+				return false;
+		} else if (!type.equals(other.type))
+			return false;
+		return true;
 	}
 	
 	@Override
 	public int hashCode() {
-		return this.type.hashCode();
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		return result;
 	}
 }

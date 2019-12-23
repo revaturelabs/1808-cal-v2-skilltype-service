@@ -77,7 +77,7 @@ public class SkillTypeController {
 	 * @return The string representation of the type of skill
 	 */
 	@GetMapping(value = "skill/{id}")
-	public String getType(@PathVariable("id")Integer id) {
+	public String getType(@PathVariable("id")int id) {
 		log.debug("Retrieving skill with id: " + id);
 		SkillType type = skillService.getSkillType(id);
 		if (type == null || !StringUtils.hasText(type.getType())) {

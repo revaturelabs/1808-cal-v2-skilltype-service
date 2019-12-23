@@ -6,7 +6,7 @@ import com.revature.caliber.beans.SkillType;
 public interface SkillTypeService {
 	public void createSkillType(SkillType skill);
 
-	public SkillType getSkillType(Integer id);
+	public SkillType getSkillType(int id);
 
 	public List<SkillType> getSkillTypes();
 
